@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+    <title>Add Product - Inventory Management</title>
+    
+  </head>
+  <body>
+
+      <h1>Add New Product</h1>
+      <form method="POST" action="/add-product">
+          <label for="name">Product Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+          />
+
+          <label for="price">Price</label>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            required
+          />
+
+          <label for="quantity">Quantity</label>
+          <input
+            type="number"
+            name="quantity"
+            id="quantity"
+            required
+          />
+        </div>
+        <button type="submit" >Add Product</button>
+      </form>
+    </div>
+  </body>
+</html>

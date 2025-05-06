@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Location</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <title>Add Product Movement</title>
+  </head>
+  <body>
+    <h1>Add Product Movement</h1>
+    <form method="POST">
+      <label for="timestamp">Date & Time:</label>
+      <input type="datetime-local" name="timestamp" required /><br /><br />
+
+      <label for="product_id">Product:</label>
+      <select name="product_id" required>
+        {% for product in products %}
+        <option value="{{ product[0] }}">{{ product[1] }}</option>
+        {% endfor %}</select
+      ><br /><br />
+
+      <label for="from_location">From Location:</label>
+      <select name="from_location">
+        <option value="">-- None --</option>
+        {% for location in locations %}
+        <option value="{{ location[0] }}">{{ location[1] }}</option>
+        {% endfor %}</select
+      ><br /><br />
+
+      <label for="to_location">To Location:</label>
+      <select name="to_location">
+        <option value="">-- None --</option>
+        {% for location in locations %}
+        <option value="{{ location[0] }}">{{ location[1] }}</option>
+        {% endfor %}</select
+      ><br /><br />
+
+      <label for="qty">Quantity:</label>
+      <input type="number" name="qty" required /><br /><br />
+
+      <input type="submit" value="Add Movement" />
+    </form>
+    <br />
+    <a href="/movements">Back to Movements</a>
+  </body>
+</html>

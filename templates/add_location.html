@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Location</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Add New Location</h1>
+    <form method="post">
+      <label for="location">Location Name:</label><br />
+      <input
+        type="text"
+        name="location"
+        placeholder="Location Name"
+        required
+      /><br /><br />
+      <button type="submit">Add</button>
+    </form>
+    <a href="{{ url_for('view_locations') }}">Back to Locations</a>
+  </body>
+</html>

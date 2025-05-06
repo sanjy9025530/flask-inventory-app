@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <title>Product Movements</title>
+  </head>
+  <body>
+    <h1>Product Movements</h1>
+    <a href="/add-movement">Add Movement</a>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Timestamp</th>
+          <th>Product</th>
+          <th>From Location</th>
+          <th>To Location</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for movement in movements %}
+        <tr>
+          <td>{{ movement.movement_id }}</td>
+          <td>{{ movement.timestamp }}</td>
+          <td>{{ movement.name or 'Unknown' }}</td>
+          <td>{{ movement.from_location or 'N/A' }}</td>
+          <td>{{ movement.to_location or 'N/A' }}</td>
+          <td>{{ movement.qty }}</td>
+          <td>
+            <a href="/edit-movement/{{ movement.movement_id }}">Edit</a> |
+            <a href="/delete-movement/{{ movement.movement_id }}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br />
+    <a href="/">Back to Home</a>
+  </body>
+</html>

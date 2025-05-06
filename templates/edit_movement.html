@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <title>Edit Movement</title>
+</head>
+<body>
+    <h1>Edit Product Movement</h1>
+    <form method="POST">
+        <label>Date:</label>
+        <input type="datetime-local" name="timestamp" value="{{ movement.timestamp }}" required><br><br>
+
+        <label>Product:</label>
+        <select name="product_id" required>
+            {% for product in products %}
+                <option value="{{ product.id }}" {% if product.id == movement.product_id %}selected{% endif %}>
+                    {{ product.name }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>From Location:</label>
+        <select name="from_location">
+            <option value="">--None--</option>
+            {% for location in locations %}
+                <option value="{{ location.location_id }}" {% if location.location_id == movement.from_location %}selected{% endif %}>
+                    {{ location.location }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>To Location:</label>
+        <select name="to_location">
+            <option value="">--None--</option>
+            {% for location in locations %}
+                <option value="{{ location.location_id }}" {% if location.location_id == movement.to_location %}selected{% endif %}>
+                    {{ location.location }}
+                </option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Quantity:</label>
+        <input type="number" name="qty" value="{{ movement.qty }}" required><br><br>
+
+        <button type="submit">Update Movement</button>
+    </form>
+    <br>
+    <a href="/movements">Back to Movements</a>
+</body>
+</html>
+
+
+

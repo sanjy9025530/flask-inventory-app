@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inventory System - Home</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Product Inventory</h1>
+
+    <form method="get" action="/">
+      <input type="text" name="query" placeholder="Search product" />
+      <input type="submit" value="Search" />
+    </form>
+
+    <a href="/add-product">Add Product</a> |
+    <a href="/locations">Locations</a> |
+    <a href="/movements">Product Movements</a> |
+    <a href="/report">Stock Report</a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+        <tr>
+          <td>{{ product[0] }}</td>
+          <td>{{ product[1] }}</td>
+          <td>{{ product[2] }}</td>
+          <td>{{ product[3] }}</td>
+          <td>
+            <a href="/edit/{{ product[0] }}">Edit</a>
+            <form
+              action="/delete/{{ product[0] }}"
+              method="post"
+              style="display: inline"
+            >
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Locations</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Locations</h1>
+    <table border="1" cellpadding="10" cellspacing="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Location Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for location in locations %}
+        <tr>
+          <td>{{ location['location_id'] }}</td>
+          <td>{{ location['location'] }}</td>
+          <td>
+            <a href="{{ url_for('edit_location', id=location['location_id']) }}"
+              >Edit</a
+            >
+            |
+            <form
+              action="{{ url_for('delete_location', id=location['location_id']) }}"
+              method="post"
+              style="display: inline"
+            >
+              <button
+                type="submit"
+                onclick="return confirm('Delete this location?');"
+              >
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br />
+    <a href="{{ url_for('add_location') }}">Add Location</a> |
+    <a href="{{ url_for('home') }}">Home</a>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+
+    <title>Edit Product</title>
+  </head>
+  <body>
+    <h1>Edit Product</h1>
+    <form method="post" action="/update/{{ product[0] }}">
+      <input type="text" name="name" value="{{ product[1] }}" /><br />
+      <input type="text" name="price" value="{{ product[2] }}" /><br />
+      <input type="text" name="quantity" value="{{ product[3] }}" /><br />
+      <button type="submit">Update</button>
+    </form>
+    <p><a href="/">Back to Home</a></p>
+  </body>
+</html>
